@@ -12,8 +12,10 @@ export default defineConfig({
         "./Widget": "./src/components/Widget.tsx",
       },
       shared: {
-        react: { singleton: true },
-        "react-dom": { singleton: true },
+        // Must match the host (PromptX-Frontend) exactly: React 19 throws if
+        // react and react-dom resolve to different versions at runtime.
+        react: { singleton: true, requiredVersion: "19.1.1" },
+        "react-dom": { singleton: true, requiredVersion: "19.1.1" },
       },
       dts: {
         tsConfigPath: "./tsconfig.app.json",
